@@ -31,3 +31,22 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Docker ###
+.env
+.env.*
+docker-data/
+*.tar
+
+### Spring Boot logs ###
+logs/
+*.log
+hs_err_pid*
+
+### OS ###
+.DS_Store
+Thumbs.db
+
+### Sensitive configs ###
+application-dev.properties
+application-prod.properties
