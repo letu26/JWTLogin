@@ -1,7 +1,6 @@
 package com.javaweb.services.Impl;
 
 import com.javaweb.components.JwtTokenUtil;
-import com.javaweb.customexception.PermissionDenyException;
 import com.javaweb.dto.UserDTO;
 import com.javaweb.entity.Role;
 import com.javaweb.entity.User;
@@ -15,7 +14,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -35,14 +33,13 @@ public class UserServicesImpl implements IUserServices {
         if(userRepository.existsByUsername(username)){
             throw new DataIntegrityViolationException("Username already exists");
         }
-        //check role
-        Role role = roleRepository.findById(userDTO.getRoleId())
+        Role role = roleRepository.findByName("USER")
                 .orElseThrow(() -> new Exception("Role id not found"));
 
         //check authortication
-        if(role.getName().toUpperCase().equals("ADMIN")){
-            throw new PermissionDenyException("You cannot register an admin account");
-        }
+//        if(role.getName().toUpperCase().equals("ADMIN")){
+//            throw new PermissionDenyException("You cannot register an admin account");
+//        }
         //convert from userDTO => userEntity
         User newUser = User.builder()
                 .username(userDTO.getUsername())

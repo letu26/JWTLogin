@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  backend:
+    build: .
+    container_name: spring_backend
+    ports:
+      - "8080:8080"
+    networks:
+      - backend_network
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-8.0.36:3306/JwtAuthen
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 123456
+    restart: always
+
+networks:
+  backend_network:
+    external: true

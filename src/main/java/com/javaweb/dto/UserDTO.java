@@ -17,8 +17,5 @@ public class UserDTO {
     private String password;
     @NotBlank(message = "RetypePassword is required")
     private String retypePassword;
-
-    @NotNull(message = "Role id is required")
-    private Long roleId;
 }
 
