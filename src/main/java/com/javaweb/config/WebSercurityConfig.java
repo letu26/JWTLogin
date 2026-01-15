@@ -33,7 +33,8 @@ public class WebSercurityConfig {
                 .authorizeHttpRequests(requests -> {
                     requests
                             .requestMatchers(
-                                    "/api/users/login"
+                                    "/api/users/login",
+                                    "/api/users/register"
                             )
                             .permitAll()
                             .requestMatchers(GET, "/api/products**").hasAnyRole("USER", "ADMIN")

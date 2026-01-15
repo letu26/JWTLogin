@@ -67,7 +67,8 @@ public class JwtTokenFilter extends OncePerRequestFilter {
     //kiểm tra url và method của api hiện tại có khớp với những api được bỏ qua xác thực jwt
     private boolean isBypassToken(@NonNull HttpServletRequest request){
         final List<Pair<String, String>> bypassToken = Arrays.asList(
-                Pair.of("/api/users/login", "POST")
+                Pair.of("/api/users/login", "POST"),
+                Pair.of("/api/users/register", "POST")
         );
         for(Pair<String, String> bypassTokens: bypassToken) {
             if (request.getServletPath().contains(bypassTokens.getFirst()) &&
